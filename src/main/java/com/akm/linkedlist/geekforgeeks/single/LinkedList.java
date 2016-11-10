@@ -22,8 +22,11 @@ public class LinkedList {
         int[] nodes = {1, 2, 3, 4, 5, 6, 7, 8};
         // Creating LinkedList From Array
         LinkedList linkedList = LinkedList.createLinkedListFromArray(nodes);
+        System.out.println("Printing LinkedList");
         // Printing elemets of LinkedList
         linkedList.print();
+        System.out.println("\nPrinting LinkedList in Reverse Order");
+        linkedList.printReverse();
 
 
     }
@@ -83,4 +86,28 @@ public class LinkedList {
         System.out.print(stringBuilder);
         printUtil(node.getNextNode());
     }
+
+    /**
+     * print LinkedList in Reverse
+     */
+    public void printReverse() {
+        printReverseUtil(head);
+    }
+
+    /**
+     * printReverseUtil - will print recursively elements of LinkedList in Reverse Order
+     *
+     * @param node Node to be printed
+     */
+    private void printReverseUtil(Node node) {
+        if (node == null)
+            return;
+        printReverseUtil(node.getNextNode());
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(" ")
+                .append(node.getVal())
+                .append(" ");
+        System.out.print(stringBuilder);
+    }
+
 }
